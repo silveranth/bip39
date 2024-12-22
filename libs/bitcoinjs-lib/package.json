@@ -5,10 +5,10 @@
     "build": "browserify bitcoinjs-lib.js --standalone bitcoinjs > /tmp/bitcoinjs-lib.js"
   },
   "dependencies": {
-    "bitcoinjs-lib": "3.3.2"
+    "bitcoinjs-lib": "6.1.7"
   },
   "devDependencies": {
-    "browserify": "^16.2.3",
+    "browserify": "^17.0.1",
     "uglify-es": "^3.3.9"
   }
 }

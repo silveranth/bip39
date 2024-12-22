@@ -19,5 +19,5 @@ created with the following steps:
     1. attach the bip39-standalone.html file
 1. Download the file from the release and confirm it hashes to the expected value `sha256sum bip39-standalone.html`
 1. Download the signature from the release and verify it. `gpg --verify signature.txt.asc`
-1. Publish to any hosted locations (eg iancoleman.github.io/bip39)
+1. Publish to any hosted locations (e.g. iancoleman.github.io/bip39)
 1. Add a new post to twitter from @bip39tool with the version, link and hash

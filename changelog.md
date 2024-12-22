@@ -1,3 +1,10 @@
+# 0.6.0
+* Add support for Solana
+* Upgraded to BitcoinJS v6.1.7
+* Add taproot support for bitcoin
+* Cleaned up dead crypto projects
+* Changed from browserify to webpack for bundler
+
 # 0.5.6
 
 * Add warning to not share info from the page

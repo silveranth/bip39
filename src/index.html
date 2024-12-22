@@ -9,13 +9,14 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="bitcoin mnemonic converter" name="description" />
         <meta content="Ian Coleman" name="author" />
+        <meta content="silver_anth" name="author" />
         <link type="image/x-icon" rel="icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" />
     </head>
     <body>
         <div class="container">
 
             <h1 class="text-center">Mnemonic Code Converter</h1>
-            <p class="version">v0.5.6</p>
+            <p class="version">v0.6.0</p>
             <hr>
             <div class="row">
                 <div class="col-md-12">
@@ -51,8 +52,8 @@
                                             <option value="3">3</option>
                                             <option value="6">6</option>
                                             <option value="9">9</option>
-                                            <option value="12">12</option>
-                                            <option value="15" selected>15</option>
+                                            <option value="12" selected>12</option>
+                                            <option value="15">15</option>
                                             <option value="18">18</option>
                                             <option value="21">21</option>
                                             <option value="24">24</option>
@@ -424,6 +425,9 @@
                         <li id="bip84-tab">
                             <a href="#bip84" role="tab" data-toggle="tab">BIP84</a>
                         </li>
+                        <li id="bip86-tab">
+                            <a href="#bip86" role="tab" data-toggle="tab">BIP86</a>
+                        </li>
                         <li id="bip141-tab">
                             <a href="#bip141" role="tab" data-toggle="tab">BIP141</a>
                         </li>
@@ -479,7 +483,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="account-xprv" class="col-sm-2 control-label">
+                                    <label for="account-xprv-bip44" class="col-sm-2 control-label">
                                         <span>Account Extended Private Key</span>
                                     </label>
                                     <div class="col-sm-10">
@@ -487,7 +491,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="account-xpub" class="col-sm-2 control-label">
+                                    <label for="account-xpub-bip44" class="col-sm-2 control-label">
                                         <span>Account Extended Public Key</span>
                                     </label>
                                     <div class="col-sm-10">
@@ -762,7 +766,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="account-xprv" class="col-sm-2 control-label">
+                                        <label for="account-xprv-bip84" class="col-sm-2 control-label">
                                             <span>Account Extended Private Key</span>
                                         </label>
                                         <div class="col-sm-10">
@@ -770,7 +774,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="account-xpub" class="col-sm-2 control-label">
+                                        <label for="account-xpub-bip84" class="col-sm-2 control-label">
                                             <span>Account Extended Public Key</span>
                                         </label>
                                         <div class="col-sm-10">
@@ -788,6 +792,96 @@
                                         <label for="bip84-path" class="col-sm-2 control-label">BIP32 Derivation Path</label>
                                         <div class="col-sm-10">
                                             <input id="bip84-path" type="text" class="path form-control" value="m/84'/0'/0'/0" readonly="readonly">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="bip86" class="tab-pane">
+                            <form class="form-horizontal" role="form">
+                                <br>
+                                <div class="unavailable hidden">
+                                    <div class="form-group">
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-10">
+                                            <p>BIP86 is unavailable for this coin.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="available">
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-10">
+                                        <p>
+                                            For more info see the
+                                            <a href="https://github.com/bitcoin/bips/blob/master/bip-0086.mediawiki" target="_blank">BIP86 spec</a>.
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="purpose-bip86" class="col-sm-2 control-label">
+                                            Purpose
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input id="purpose-bip86" type="text" class="purpose form-control" value="86" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="coin-bip86" class="col-sm-2 control-label">
+                                            Coin
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input id="coin-bip86" type="text" class="coin form-control" value="0" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="account-bip86" class="col-sm-2 control-label">
+                                            Account
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input id="account-bip86" type="text" class="account form-control" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="change-bip86" class="col-sm-2 control-label">
+                                            External / Internal
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input id="change-bip86" type="text" class="change form-control" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <p>The account extended keys can be used for importing to most BIP84 compatible wallets.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="account-xprv-bip86" class="col-sm-2 control-label">
+                                            <span>Account Extended Private Key</span>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <textarea id="account-xprv-bip86" type="text" class="account-xprv private-data form-control" readonly data-show-qr autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="account-xpub-bip86" class="col-sm-2 control-label">
+                                            <span>Account Extended Public Key</span>
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <textarea id="account-xpub-bip86" type="text" class="account-xpub form-control" readonly data-show-qr autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <p>The BIP32 derivation path and extended keys are the basis for the derived addresses.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bip86-path" class="col-sm-2 control-label">BIP32 Derivation Path</label>
+                                        <div class="col-sm-10">
+                                            <input id="bip86-path" type="text" class="path form-control" value="m/86'/0'/0'/0" readonly="readonly">
                                         </div>
                                     </div>
                                 </div>
@@ -1009,7 +1103,7 @@
                     <p>Using less than 2048 PBKDF2 iterations is insecure without strong optional BIP39 Passphrase.</p>
                     <h3>License</h3>
                     <p>
-                    <span>Please refer to <a href="https://github.com/iancoleman/bip39/blob/master/LICENSE" target="_blank">the software license</a> for more detail.
+                    <span>Please refer to <a href="https://github.com/silveranth/bip39/blob/master/LICENSE" target="_blank">the software license</a> for more detail.
                     </span>
                     </p>
                     <p>The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.</p>
@@ -1052,7 +1146,7 @@
                     <p>
                     <span>Alternatively, download the file from the latest GitHub release</span>
                     -
-                    <a href="https://github.com/iancoleman/bip39/releases/latest/">https://github.com/iancoleman/bip39/releases/latest/</a>
+                    <a href="https://github.com/silveranth/bip39/releases/latest/">https://github.com/silveranth/bip39/releases/latest/</a>
                     </p>
 
                 </div>
@@ -1068,8 +1162,8 @@
                     <p>
                         <span>Get the source code from the repository</span>
                         -
-                        <a href="https://github.com/iancoleman/bip39" target="_blank">
-                            https://github.com/iancoleman/bip39
+                        <a href="https://github.com/silveranth/bip39" target="_blank">
+                            https://github.com/silveranth/bip39
                         </a>
                     </p>
 
@@ -1138,7 +1232,7 @@
         </script>
         <script src="js/jquery-3.2.1.js"></script>
         <script src="js/bootstrap.js"></script>
-        <script src="js/bip39-libs.js"></script>
+        <script src='js/bip39-libs.js'></script>
         <script src="js/bitcoinjs-extensions.js"></script>
         <script src="js/segwit-parameters.js"></script>
         <script src="js/ripple-util.js"></script>

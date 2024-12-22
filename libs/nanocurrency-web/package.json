@@ -8,7 +8,7 @@
     "nanocurrency-web": "^1.2.2"
   },
   "devDependencies": {
-    "browserify": "^16.2.3",
+    "browserify": "^17.0.1",
     "uglify-es": "^3.3.9"
   }
 }
